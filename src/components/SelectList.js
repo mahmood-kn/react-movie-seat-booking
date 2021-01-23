@@ -2,9 +2,9 @@ import React from 'react';
 
 const SelectList = () => {
   return (
-    <div class='movie-container'>
+    <div className='movie-container'>
       <label>Pick a movie: </label>
-      <select id='select-list'>
+      <select>
         <option value='10'>Interstaller ($10)</option>
         <option value='15'>Scare Face ($15)</option>
         <option value='8'>Good Fellas ($8)</option>

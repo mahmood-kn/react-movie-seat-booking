@@ -1,7 +1,12 @@
 import React from 'react';
+import SelectList from './components/SelectList';
 
 function App() {
-  return <div className='App'>hello world</div>;
+  return (
+    <>
+      <SelectList />
+    </>
+  );
 }
 
 export default App;
