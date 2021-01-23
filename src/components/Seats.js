@@ -1,68 +1,72 @@
 import React from 'react';
-import Seat from './Seat';
 
 const Seats = () => {
   return (
     <>
       <div className='row'>
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
       </div>
+
       <div className='row'>
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat occupeid'></div>
+        <div className='seat occupeid'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
       </div>
+
       <div className='row'>
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
+        <div className='seat occupeid'></div>
+        <div className='seat occupeid'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
       </div>
+
       <div className='row'>
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
+        <div className='seat'></div>
+        <div className='seat occupeid'></div>
+        <div className='seat occupeid'></div>
+        <div className='seat occupeid'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
       </div>
+
       <div className='row'>
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
       </div>
+
       <div className='row'>
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
-        <Seat />
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
+        <div className='seat'></div>
       </div>
     </>
   );
