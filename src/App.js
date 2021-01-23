@@ -3,6 +3,7 @@ import SelectList from './components/SelectList';
 import Help from './components/Help';
 import Screen from './components/Screen';
 import Seats from './components/Seats';
+import Total from './components/Total';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Screen />
         <Seats />
       </div>
+      <Total />
     </>
   );
 }
