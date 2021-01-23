@@ -1,18 +1,19 @@
 import React from 'react';
+import Seat from './Seat';
 
 const Help = () => {
   return (
     <ul className='showcase'>
       <li>
-        <div className='seat'></div>
+        <Seat />
         <small>N/A</small>
       </li>
       <li>
-        <div className='seat selected'></div>
+        <Seat />
         <small>Selected</small>
       </li>
       <li>
-        <div className='seat occupeid'></div>
+        <Seat />
         <small>Occupeid</small>
       </li>
     </ul>
