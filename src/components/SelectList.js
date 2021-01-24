@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import SeatContext from '../contex/seatContext';
 
 const SelectList = () => {
+  const { movies } = useContext(SeatContext);
+  console.log(movies);
   return (
     <div className='movie-container'>
       <label>Pick a movie: </label>
       <select>
-        <option value='10'>Interstaller ($10)</option>
-        <option value='15'>Scare Face ($15)</option>
-        <option value='8'>Good Fellas ($8)</option>
-        <option value='20'>God Father ($20)</option>
+        {movies.map((movie, i) => (
+          <option value={movie.price}>
+            {movie.name} (${movie.price})
+          </option>
+        ))}
       </select>
     </div>
   );

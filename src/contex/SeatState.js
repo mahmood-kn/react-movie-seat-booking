@@ -14,7 +14,7 @@ const SeatState = ({ children }) => {
     seats: 0,
     total: 0,
   };
-  const [state, dispatch] = useReducer(initialState, seatReducer);
+  const [state, dispatch] = useReducer(seatReducer, initialState);
 
   return (
     <SeatContext.Provider
