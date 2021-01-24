@@ -9,11 +9,11 @@ const Help = () => {
         <small>N/A</small>
       </li>
       <li>
-        <Seat />
+        <Seat selected />
         <small>Selected</small>
       </li>
       <li>
-        <Seat />
+        <Seat occupeid />
         <small>Occupeid</small>
       </li>
     </ul>

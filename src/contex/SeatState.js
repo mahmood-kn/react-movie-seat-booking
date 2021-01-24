@@ -14,9 +14,16 @@ const SeatState = ({ children }) => {
     seats: 0,
     total: 0,
   };
-  const [state, dispatch] = useReducer(seatReducer);
+  const [state, dispatch] = useReducer(initialState, seatReducer);
 
-  return <SeatContext.Provider>{children}</SeatContext.Provider>;
+  return (
+    <SeatContext.Provider
+      value={{
+        movies: state.movies,
+      }}>
+      {children}
+    </SeatContext.Provider>
+  );
 };
 
 export default SeatState;
