@@ -7,6 +7,7 @@ const Seats = () => {
   const row = 6;
   const column = 8;
   let { addSeat, removeSeat } = useContext(SeatContext);
+  const getSeatsId = JSON.parse(localStorage.getItem('seatsId'));
 
   const onclickHandel = (e) => {
     if (
@@ -14,13 +15,13 @@ const Seats = () => {
       !e.target.classList.contains('occupeid')
     ) {
       e.target.classList.remove('selected');
-      removeSeat();
+      removeSeat(e);
     } else if (
       !e.target.classList.contains('selected') &&
       !e.target.classList.contains('occupeid')
     ) {
       e.target.classList.add('selected');
-      addSeat();
+      addSeat(e);
     }
   };
 
@@ -44,6 +45,16 @@ const Seats = () => {
     return false;
   };
 
+  const selectedfunc = (i, j) => {
+    if (getSeatsId) {
+      for (let item of getSeatsId) {
+        if (+item === i * column + j + 1) {
+          return true;
+        }
+      }
+    }
+  };
+
   for (let i = 0; i < row; i++) {
     seats[i] = [];
     for (let j = 0; j < column; j++) {
@@ -52,6 +63,7 @@ const Seats = () => {
           id={i * column + j + 1}
           key={i * column + j + 1}
           occupeid={occupeidfunc(i, j)}
+          selected={selectedfunc(i, j)}
           onclick={onclickHandel}
         />
       );

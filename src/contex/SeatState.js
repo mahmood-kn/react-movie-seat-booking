@@ -16,12 +16,26 @@ const SeatState = ({ children }) => {
     total: 0,
     moviePrice: 0,
   };
+  let seatsId = [];
+
   const [state, dispatch] = useReducer(seatReducer, initialState);
 
-  const addSeat = () => {
+  const addSeat = (e) => {
+    seatsId = JSON.parse(localStorage.getItem('seatsId'));
+    if (seatsId === null) {
+      seatsId = [];
+    }
+    seatsId.push(e.target.dataset.id);
+    localStorage.setItem('seatsId', JSON.stringify(seatsId));
     dispatch({ type: ADD_SEAT });
   };
-  const removeSeat = () => {
+  const removeSeat = (e) => {
+    seatsId = JSON.parse(localStorage.getItem('seatsId'));
+    const filterdSeatsId =
+      seatsId !== null
+        ? seatsId.filter((item) => item !== e.target.dataset.id)
+        : [];
+    localStorage.setItem('seatsId', JSON.stringify(filterdSeatsId));
     dispatch({ type: REMOVE_SEAT });
   };
 
