@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Seat = ({ occupeid, selected, onclick }) => {
+const Seat = ({ id, occupeid, selected, onclick }) => {
   const classes = ['seat'];
   if (occupeid) {
     classes.push('occupeid');
@@ -8,7 +8,9 @@ const Seat = ({ occupeid, selected, onclick }) => {
     classes.push('selected');
   }
 
-  return <div className={classes.join(' ')} onClick={onclick}></div>;
+  return (
+    <div className={classes.join(' ')} data-id={id} onClick={onclick}></div>
+  );
 };
 
 export default Seat;

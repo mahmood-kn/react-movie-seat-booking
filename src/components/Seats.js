@@ -22,9 +22,16 @@ const Seats = () => {
   for (let i = 0; i < row; i++) {
     seats[i] = [];
     for (let j = 0; j < column; j++) {
-      seats[i][j] = <Seat key={i * column + j + 1} onclick={onclickHandel} />;
+      seats[i][j] = (
+        <Seat
+          id={i * column + j + 1}
+          key={i * column + j + 1}
+          onclick={onclickHandel}
+        />
+      );
     }
   }
+
   return (
     <>
       {seats.map((row, i) => (
