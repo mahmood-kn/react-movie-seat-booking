@@ -6,17 +6,42 @@ const Seats = () => {
   const seats = [];
   const row = 6;
   const column = 8;
-
   let { addSeat, removeSeat } = useContext(SeatContext);
 
   const onclickHandel = (e) => {
-    if (e.target.classList.contains('selected')) {
+    if (
+      e.target.classList.contains('selected') &&
+      !e.target.classList.contains('occupeid')
+    ) {
       e.target.classList.remove('selected');
       removeSeat();
-    } else {
+    } else if (
+      !e.target.classList.contains('selected') &&
+      !e.target.classList.contains('occupeid')
+    ) {
       e.target.classList.add('selected');
       addSeat();
     }
+  };
+
+  const occupeidfunc = (i, j) => {
+    if (i === 1 && j === 2) {
+      return true;
+    } else if (i === 1 && j === 3) {
+      return true;
+    } else if (i === 2 && j === 0) {
+      return true;
+    } else if (i === 2 && j === 1) {
+      return true;
+    } else if (i === 3 && j === 1) {
+      return true;
+    } else if (i === 3 && j === 2) {
+      return true;
+    } else if (i === 3 && j === 3) {
+      return true;
+    }
+
+    return false;
   };
 
   for (let i = 0; i < row; i++) {
@@ -26,6 +51,7 @@ const Seats = () => {
         <Seat
           id={i * column + j + 1}
           key={i * column + j + 1}
+          occupeid={occupeidfunc(i, j)}
           onclick={onclickHandel}
         />
       );
