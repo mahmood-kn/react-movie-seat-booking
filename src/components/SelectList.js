@@ -3,13 +3,12 @@ import SeatContext from '../contex/seatContext';
 
 const SelectList = () => {
   const { movies } = useContext(SeatContext);
-  console.log(movies);
   return (
     <div className='movie-container'>
       <label>Pick a movie: </label>
       <select>
-        {movies.map((movie, i) => (
-          <option value={movie.price}>
+        {movies.map((movie) => (
+          <option key={movie.id} value={movie.price} data-movieid={movie.id}>
             {movie.name} (${movie.price})
           </option>
         ))}
