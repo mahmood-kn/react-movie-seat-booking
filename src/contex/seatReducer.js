@@ -4,8 +4,7 @@ const seatReducer = (state, action) => {
   switch (action.type) {
     case ADD_SEAT:
       let updateSeatsId = JSON.parse(localStorage.getItem('seatsId'));
-      console.log(updateSeatsId);
-      if (updateSeatsId) {
+      if (updateSeatsId.length > 0) {
         updateSeatsId = [...state.seatsId, action.payload];
       } else {
         updateSeatsId = [action.payload];
