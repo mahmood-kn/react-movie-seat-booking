@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import Seat from './Seat';
 import SeatContext from '../contex/seatContext';
 
@@ -9,21 +9,24 @@ const Seats = () => {
   let { addSeat, removeSeat } = useContext(SeatContext);
   const getSeatsId = JSON.parse(localStorage.getItem('seatsId'));
 
-  const onclickHandel = (e) => {
-    if (
-      e.target.classList.contains('selected') &&
-      !e.target.classList.contains('occupeid')
-    ) {
-      e.target.classList.remove('selected');
-      removeSeat(e);
-    } else if (
-      !e.target.classList.contains('selected') &&
-      !e.target.classList.contains('occupeid')
-    ) {
-      e.target.classList.add('selected');
-      addSeat(e);
-    }
-  };
+  const onclickHandel = useCallback(
+    (e) => {
+      if (
+        e.target.classList.contains('selected') &&
+        !e.target.classList.contains('occupeid')
+      ) {
+        e.target.classList.remove('selected');
+        removeSeat(e.target.dataset.id);
+      } else if (
+        !e.target.classList.contains('selected') &&
+        !e.target.classList.contains('occupeid')
+      ) {
+        e.target.classList.add('selected');
+        addSeat(e.target.dataset.id);
+      }
+    },
+    [addSeat, removeSeat]
+  );
 
   const occupeidfunc = (i, j) => {
     if (i === 1 && j === 2) {

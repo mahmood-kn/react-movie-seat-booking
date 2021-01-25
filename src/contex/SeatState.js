@@ -2,57 +2,47 @@ import React, { useReducer } from 'react';
 
 import SeatContext from './seatContext';
 import seatReducer from './seatReducer';
-import { ADD_SEAT, REMOVE_SEAT, UPDATE_MOVIE_PRICE } from './types';
+import { ADD_SEAT, REMOVE_SEAT, GET_DATA } from './types';
 
 const SeatState = ({ children }) => {
   const initialState = {
     movies: [
-      { id: 1, name: 'Interstaller', price: 10 },
-      { id: 2, name: 'Scare Face', price: 15 },
-      { id: 3, name: 'Good Fellas', price: 8 },
-      { id: 4, name: 'God Father', price: 20 },
+      { id: 0, name: 'Interstaller', price: 10 },
+      { id: 1, name: 'Scare Face', price: 15 },
+      { id: 2, name: 'Good Fellas', price: 8 },
+      { id: 3, name: 'God Father', price: 20 },
     ],
-    seatsNum: 0,
-    total: 0,
-    moviePrice: 0,
+    seatsId: [],
+    selectedMovie: {},
   };
-  let seatsId = [];
 
   const [state, dispatch] = useReducer(seatReducer, initialState);
 
-  const addSeat = (e) => {
-    seatsId = JSON.parse(localStorage.getItem('seatsId'));
-    if (seatsId === null) {
-      seatsId = [];
-    }
-    seatsId.push(e.target.dataset.id);
-    localStorage.setItem('seatsId', JSON.stringify(seatsId));
-    dispatch({ type: ADD_SEAT });
+  const addSeat = (id) => {
+    dispatch({ type: ADD_SEAT, payload: id });
   };
-  const removeSeat = (e) => {
-    seatsId = JSON.parse(localStorage.getItem('seatsId'));
-    const filterdSeatsId =
-      seatsId !== null
-        ? seatsId.filter((item) => item !== e.target.dataset.id)
-        : [];
-    localStorage.setItem('seatsId', JSON.stringify(filterdSeatsId));
-    dispatch({ type: REMOVE_SEAT });
+  const removeSeat = (id) => {
+    dispatch({ type: REMOVE_SEAT, payload: id });
   };
 
-  const updateMoviePrice = (price) => {
-    dispatch({ type: UPDATE_MOVIE_PRICE, payload: price });
+  const saveMovie = (movie) => {
+    localStorage.setItem('selectedMovie', JSON.stringify(movie));
+  };
+
+  const getData = () => {
+    dispatch({ type: GET_DATA });
   };
 
   return (
     <SeatContext.Provider
       value={{
         movies: state.movies,
-        seatsNum: state.seatsNum,
-        total: state.total,
-        moviePrice: state.moviePrice,
+        selectedMovie: state.selectedMovie,
+        seatsId: state.seatsId,
         addSeat,
         removeSeat,
-        updateMoviePrice,
+        saveMovie,
+        getData,
       }}>
       {children}
     </SeatContext.Provider>

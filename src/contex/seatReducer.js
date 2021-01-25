@@ -1,22 +1,56 @@
-import { ADD_SEAT, REMOVE_SEAT, UPDATE_MOVIE_PRICE } from './types';
+import { ADD_SEAT, REMOVE_SEAT, GET_DATA } from './types';
 
 const seatReducer = (state, action) => {
   switch (action.type) {
     case ADD_SEAT:
+      let updateSeatsId = JSON.parse(localStorage.getItem('seatsId'));
+      console.log(updateSeatsId);
+      if (updateSeatsId) {
+        updateSeatsId = [...state.seatsId, action.payload];
+      } else {
+        updateSeatsId = [action.payload];
+      }
+      localStorage.setItem('seatsId', JSON.stringify(updateSeatsId));
       return {
         ...state,
-        seatsNum: state.seatsNum + 1,
+        seatsId: updateSeatsId,
       };
     case REMOVE_SEAT:
+      let updatedseatsId = JSON.parse(localStorage.getItem('seatsId'));
+      const filterdSeatsId =
+        updatedseatsId !== null
+          ? updatedseatsId.filter((item) => item !== action.payload)
+          : [];
+      localStorage.setItem('seatsId', JSON.stringify(filterdSeatsId));
       return {
         ...state,
-        seatsNum: state.seatsNum - 1,
+        seatsId: updatedseatsId,
       };
-    case UPDATE_MOVIE_PRICE:
+
+    case GET_DATA:
+      let getSeatsId = JSON.parse(localStorage.getItem('seatsId'));
+      let getSelectedMovie;
+      if (getSelectedMovie === null) {
+        getSelectedMovie = {
+          index: 0,
+          price: state.movies[0].price,
+        };
+      } else {
+        getSelectedMovie = JSON.parse(localStorage.getItem('selectedMovie'));
+      }
+      if (getSeatsId === null) {
+        getSeatsId = [];
+        localStorage.setItem('seatsId', JSON.stringify([]));
+      } else {
+        getSeatsId = JSON.parse(localStorage.getItem('seatsId'));
+      }
+
       return {
         ...state,
-        moviePrice: action.payload,
+        selectedMovie: getSelectedMovie,
+        seatsId: getSeatsId,
       };
+
     default:
       return state;
   }
