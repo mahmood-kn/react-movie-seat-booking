@@ -23,7 +23,7 @@ const seatReducer = (state, action) => {
       localStorage.setItem('seatsId', JSON.stringify(filterdSeatsId));
       return {
         ...state,
-        seatsId: [...new Set(updatedseatsId)],
+        seatsId: [...new Set(filterdSeatsId)],
       };
 
     case GET_DATA:
