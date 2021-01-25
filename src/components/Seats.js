@@ -56,6 +56,7 @@ const Seats = () => {
         }
       }
     }
+    return false;
   };
 
   for (let i = 0; i < row; i++) {
