@@ -13,7 +13,7 @@ const SeatState = ({ children }) => {
       { id: 3, name: 'God Father', price: 20 },
     ],
     seatsId: [],
-    seatsNum: 0,
+
     selectedMovie: {},
   };
 
@@ -40,7 +40,6 @@ const SeatState = ({ children }) => {
         movies: state.movies,
         selectedMovie: state.selectedMovie,
         seatsId: state.seatsId,
-        seatsNum: state.seatsNum,
         addSeat,
         removeSeat,
         saveMovie,

@@ -6,7 +6,7 @@ const Seats = () => {
   const seats = [];
   const row = 6;
   const column = 8;
-  let { addSeat, removeSeat, seatsNum } = useContext(SeatContext);
+  let { addSeat, removeSeat } = useContext(SeatContext);
   const getSeatsId = JSON.parse(localStorage.getItem('seatsId'));
 
   const onclickHandel = useCallback(
@@ -50,7 +50,7 @@ const Seats = () => {
 
   const selectedfunc = (i, j) => {
     if (getSeatsId) {
-      for (let item of [...new Set(getSeatsId)]) {
+      for (let item of getSeatsId) {
         if (+item === i * column + j + 1) {
           return true;
         }
