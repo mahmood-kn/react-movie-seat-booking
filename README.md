@@ -9,4 +9,4 @@ So if you refresh the page you data are still the same.
 
 ### Live demo
 
-Click [here](https://mahmood-kn.github.io/react-movie-seat-booking 'Form Validation') to see the live demo of this project.
+Click [here](https://mahmood-kn.github.io/react-movie-seat-booking 'Movie Seat Booking') to see the live demo of this project.
